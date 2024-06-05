@@ -42,6 +42,7 @@ public class WalletController {
         );
     }
     // end::get-aggregate-root[]
+
     @GetMapping("/wallets/{id}")
     public EntityModel<Wallet> one(@PathVariable Long id) {
         Wallet wallet = repository.findById(id)
