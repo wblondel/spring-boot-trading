@@ -43,7 +43,7 @@ public class Pair {
     public Pair(Currency baseCurrency, Currency quoteCurrency) {
         this.baseCurrency = baseCurrency;
         this.quoteCurrency = quoteCurrency;
-        this.pairCode = baseCurrency.getTicker() + '-' + quoteCurrency.getTicker();
+        this.pairCode = baseCurrency.getTicker() + quoteCurrency.getTicker();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
