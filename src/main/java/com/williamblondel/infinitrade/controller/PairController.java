@@ -39,14 +39,14 @@ public class PairController {
     }
     // end::get-aggregate-root[]
 
-    @PostMapping({"/pairs", "/pairs/"})
-    ResponseEntity<?> newPair(@RequestBody Pair newPair) {
-        EntityModel<Pair> entityModel = assembler.toModel(repository.save(newPair));
-
-        return ResponseEntity
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
-                .body(entityModel);
-    }
+//    @PostMapping({"/pairs", "/pairs/"})
+//    ResponseEntity<?> newPair(@RequestBody Pair newPair) {
+//        EntityModel<Pair> entityModel = assembler.toModel(repository.save(newPair));
+//
+//        return ResponseEntity
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
+//                .body(entityModel);
+//    }
 
     @GetMapping("/pairs/{id}")
     public EntityModel<Pair> one(@PathVariable Long id) {
@@ -57,32 +57,32 @@ public class PairController {
         return assembler.toModel(pair);
     }
 
-    @PutMapping("/pairs/{id}")
-    ResponseEntity<?> replacePair(@PathVariable Long id, @RequestBody Pair newPair) {
-        Pair updatedPair = repository.findById(id)
-                .map(pair -> {
-                    //pair.setPricePrecision(newPair.getPricePrecision());
-                   // pair.setQuantityPrecision(newPair.getQuantityPrecision());
-                   // pair.setMinimumQuantity(newPair.getMinimumQuantity());
+//    @PutMapping("/pairs/{id}")
+//    ResponseEntity<?> replacePair(@PathVariable Long id, @RequestBody Pair newPair) {
+//        Pair updatedPair = repository.findById(id)
+//                .map(pair -> {
+//                    //pair.setPricePrecision(newPair.getPricePrecision());
+//                   // pair.setQuantityPrecision(newPair.getQuantityPrecision());
+//                   // pair.setMinimumQuantity(newPair.getMinimumQuantity());
+//
+//                    return repository.save(pair);
+//                })
+//                .orElseGet(() -> {
+//                    newPair.setId(id);
+//                    return repository.save(newPair);
+//                });
+//
+//        EntityModel<Pair> entityModel = assembler.toModel(updatedPair);
+//
+//        return ResponseEntity
+//                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
+//                .body(entityModel);
+//    }
 
-                    return repository.save(pair);
-                })
-                .orElseGet(() -> {
-                    newPair.setId(id);
-                    return repository.save(newPair);
-                });
-
-        EntityModel<Pair> entityModel = assembler.toModel(updatedPair);
-
-        return ResponseEntity
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
-                .body(entityModel);
-    }
-
-    @DeleteMapping("/pairs/{id}")
-    ResponseEntity<?> deletePair(@PathVariable Long id) {
-        repository.deleteById(id);
-
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping("/pairs/{id}")
+//    ResponseEntity<?> deletePair(@PathVariable Long id) {
+//        repository.deleteById(id);
+//
+//        return ResponseEntity.noContent().build();
+//    }
 }
