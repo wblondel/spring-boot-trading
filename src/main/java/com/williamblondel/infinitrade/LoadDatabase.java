@@ -1,10 +1,7 @@
 package com.williamblondel.infinitrade;
 
 import com.williamblondel.infinitrade.model.*;
-import com.williamblondel.infinitrade.repository.CurrencyRepository;
-import com.williamblondel.infinitrade.repository.PairRepository;
-import com.williamblondel.infinitrade.repository.UserRepository;
-import com.williamblondel.infinitrade.repository.WalletRepository;
+import com.williamblondel.infinitrade.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,15 +19,16 @@ public class LoadDatabase {
             UserRepository userRepository,
             CurrencyRepository currencyRepository,
             PairRepository pairRepository,
-            WalletRepository walletRepository
-    ) {
+            WalletRepository walletRepository,
+            TransactionRepository transactionRepository) {
         return args -> {
             // Create user
             User johnDoeUser = new User("john.doe", "john.doe@example.test", "aaa");
             User janeDoeUser = new User("jane.doe", "jane.doe@example.test", "bbb");
+            User davidDoeUser = new User("david.doe", "david.doe@example.test", "bbb");
 
             // Save users
-            log.info("Preloading {}", userRepository.saveAll(List.of(johnDoeUser, janeDoeUser)));
+            log.info("Preloading {}", userRepository.saveAll(List.of(johnDoeUser, janeDoeUser, davidDoeUser)));
 
             // Create currencies
             Currency btcCurrency = new Currency("BTC", "Bitcoin", "Bitcoin is the world’s first cryptocurrency designed to operate decentralized over a blockchain. Unlike traditional currencies, it can be used as a store of value and for making digital payments without a central authority like a bank or a financial institution. The symbol BTC in the market represents Bitcoin.", "https://bitcoin.org");
@@ -63,18 +61,37 @@ public class LoadDatabase {
             Wallet johnDoeUsdtWallet = new Wallet(johnDoeUser, usdtCurrency, 50000.0);
             Wallet johnDoeUsdcWallet = new Wallet(johnDoeUser, usdcCurrency, 25000.0);
             Wallet johnDoeBtcWallet = new Wallet(johnDoeUser, btcCurrency, 0.0033);
+            Wallet janeDoeUsdtWallet = new Wallet(janeDoeUser, usdtCurrency, 1.0);
+            Wallet janeDoeUsdcWallet = new Wallet(janeDoeUser, usdcCurrency, 2.0);
+            Wallet janeDoeBtcWallet = new Wallet(janeDoeUser, btcCurrency, 0.001);
 
             // Save wallet
             log.info("Preloading {}", walletRepository.saveAll(List.of(
                     johnDoeUsdtWallet,
                     johnDoeUsdcWallet,
-                    johnDoeBtcWallet
+                    johnDoeBtcWallet,
+                    janeDoeUsdtWallet,
+                    janeDoeUsdcWallet,
+                    janeDoeBtcWallet
             )));
 
             // Create transactions to match wallets
             Transaction johnDoeUsdtDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdtWallet, usdtCurrency, 50000.0, "deposit", "completed");
             Transaction johnDoeUsdcDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdcWallet, usdcCurrency, 25000.0, "deposit", "completed");
             Transaction johnDoeBtcDepositTransaction = new Transaction(johnDoeUser, johnDoeBtcWallet, btcCurrency, 0.0033, "deposit", "completed");
+            Transaction janeDoeUsdtDepositTransaction = new Transaction(janeDoeUser, janeDoeUsdtWallet, usdtCurrency, 1.0, "deposit", "completed");
+            Transaction janeDoeUsdcDepositTransaction = new Transaction(janeDoeUser, janeDoeUsdcWallet, usdcCurrency, 2.0, "deposit", "completed");
+            Transaction janeDoeBtcDepositTransaction = new Transaction(janeDoeUser, janeDoeBtcWallet, btcCurrency, 0.001, "deposit", "completed");
+
+            // Save transactions
+            log.info("Preloading {}", transactionRepository.saveAll(List.of(
+                    johnDoeUsdtDepositTransaction,
+                    johnDoeUsdcDepositTransaction,
+                    johnDoeBtcDepositTransaction,
+                    janeDoeUsdtDepositTransaction,
+                    janeDoeUsdcDepositTransaction,
+                    janeDoeBtcDepositTransaction
+            )));
         };
     }
 }

@@ -42,7 +42,7 @@ public class Wallet {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public Long geId() {
+    public Long getId() {
         return this.id;
     }
 

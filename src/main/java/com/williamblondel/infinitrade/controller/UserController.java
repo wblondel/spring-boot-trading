@@ -34,7 +34,10 @@ public class UserController {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(users, linkTo(methodOn(UserController.class).all()).withSelfRel());
+        return CollectionModel.of(
+                users,
+                linkTo(methodOn(UserController.class).all()).withSelfRel()
+        );
     }
     // end::get-aggregate-root[]
 
@@ -43,6 +46,15 @@ public class UserController {
 
         User user = repository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
+
+        return assembler.toModel(user);
+    }
+
+    @GetMapping({"/me", "/me/"})
+    public EntityModel<User> me() {
+        // We assume the User 1 has already authenticated
+        User user = repository.findById(1L)
+                .orElseThrow(() -> new UserNotFoundException(1L));
 
         return assembler.toModel(user);
     }
