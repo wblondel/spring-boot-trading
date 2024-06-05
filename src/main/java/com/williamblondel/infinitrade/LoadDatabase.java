@@ -1,9 +1,6 @@
 package com.williamblondel.infinitrade;
 
-import com.williamblondel.infinitrade.model.Currency;
-import com.williamblondel.infinitrade.model.Pair;
-import com.williamblondel.infinitrade.model.User;
-import com.williamblondel.infinitrade.model.Wallet;
+import com.williamblondel.infinitrade.model.*;
 import com.williamblondel.infinitrade.repository.CurrencyRepository;
 import com.williamblondel.infinitrade.repository.PairRepository;
 import com.williamblondel.infinitrade.repository.UserRepository;
@@ -64,9 +61,20 @@ public class LoadDatabase {
 
             // Create wallet
             Wallet johnDoeUsdtWallet = new Wallet(johnDoeUser, usdtCurrency, 50000.0);
+            Wallet johnDoeUsdcWallet = new Wallet(johnDoeUser, usdcCurrency, 25000.0);
+            Wallet johnDoeBtcWallet = new Wallet(johnDoeUser, btcCurrency, 0.0033);
 
             // Save wallet
-            log.info("Preloading {}", walletRepository.save(johnDoeUsdtWallet));
+            log.info("Preloading {}", walletRepository.saveAll(List.of(
+                    johnDoeUsdtWallet,
+                    johnDoeUsdcWallet,
+                    johnDoeBtcWallet
+            )));
+
+            // Create transactions to match wallets
+            Transaction johnDoeUsdtDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdtWallet, usdtCurrency, 50000.0, "deposit", "completed");
+            Transaction johnDoeUsdcDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdcWallet, usdcCurrency, 25000.0, "deposit", "completed");
+            Transaction johnDoeBtcDepositTransaction = new Transaction(johnDoeUser, johnDoeBtcWallet, btcCurrency, 0.0033, "deposit", "completed");
         };
     }
 }

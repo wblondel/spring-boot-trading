@@ -1,7 +1,9 @@
 package com.williamblondel.infinitrade.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +20,7 @@ public class User {
     private String email;
 
     @Column(nullable = false, length = 255)
+    @JsonIgnore
     private String passwordHash;
 
     @Column(nullable = false)
@@ -25,6 +28,9 @@ public class User {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Wallet> wallets;
 
     public User() {}
 
@@ -83,6 +89,14 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Wallet> getWallets() {
+        return this.wallets;
+    }
+
+    public void setWallets(List<Wallet> wallets) {
+        this.wallets = wallets;
     }
 
     @Override
