@@ -36,7 +36,9 @@ public class WalletController {
 
         return CollectionModel.of(
                 wallets,
-                linkTo(methodOn(WalletController.class).all()).withSelfRel()
+                linkTo(methodOn(WalletController.class)
+                        .all()
+                ).withSelfRel()
         );
     }
     // end::get-aggregate-root[]

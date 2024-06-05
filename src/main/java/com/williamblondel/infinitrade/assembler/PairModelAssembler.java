@@ -15,8 +15,13 @@ public class PairModelAssembler implements RepresentationModelAssembler<Pair, En
     @Override
     public EntityModel<Pair> toModel(Pair pair) {
 
-        return EntityModel.of(pair,
-                linkTo(methodOn(PairController.class).one(pair.getId())).withSelfRel(),
-                linkTo(methodOn(PairController.class).all()).withRel("pairs"));
+        return EntityModel.of(
+                pair,
+                linkTo(methodOn(PairController.class)
+                        .one(pair.getId())
+                ).withSelfRel(),
+                linkTo(methodOn(PairController.class)
+                        .all()
+                ).withRel("pairs"));
     }
 }

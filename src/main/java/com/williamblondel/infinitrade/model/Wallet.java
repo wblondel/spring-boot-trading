@@ -1,10 +1,10 @@
 package com.williamblondel.infinitrade.model;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 // All the user's cryptocurrency wallets (one wallet per crypto per user)
 @Entity

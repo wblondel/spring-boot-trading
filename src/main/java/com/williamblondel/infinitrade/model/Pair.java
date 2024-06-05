@@ -1,11 +1,9 @@
 package com.williamblondel.infinitrade.model;
 
-import jakarta.annotation.Resource;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Optional;
 
 // All currency pairs available for trading on the platform
 @Entity

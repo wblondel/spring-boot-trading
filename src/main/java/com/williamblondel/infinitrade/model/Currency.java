@@ -1,8 +1,9 @@
 package com.williamblondel.infinitrade.model;
 
-import java.util.Objects;
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 // All currencies available on the platform
 @Entity

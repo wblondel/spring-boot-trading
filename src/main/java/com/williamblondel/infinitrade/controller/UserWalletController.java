@@ -2,7 +2,6 @@ package com.williamblondel.infinitrade.controller;
 
 import com.williamblondel.infinitrade.assembler.WalletModelAssembler;
 import com.williamblondel.infinitrade.exception.UserNotFoundException;
-import com.williamblondel.infinitrade.exception.WalletNotFoundException;
 import com.williamblondel.infinitrade.model.User;
 import com.williamblondel.infinitrade.model.Wallet;
 import com.williamblondel.infinitrade.repository.UserRepository;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -27,7 +24,8 @@ public class UserWalletController {
     private final WalletModelAssembler assembler;
     private final UserRepository userRepository;
 
-    public UserWalletController(WalletRepository repository, WalletModelAssembler assembler, UserRepository userRepository) {
+    public UserWalletController(WalletRepository repository, WalletModelAssembler assembler,
+                                UserRepository userRepository) {
         this.repository = repository;
         this.assembler = assembler;
         this.userRepository = userRepository;
@@ -46,7 +44,9 @@ public class UserWalletController {
 
         return CollectionModel.of(
                 wallets,
-                linkTo(methodOn(UserWalletController.class).all(userId)).withSelfRel()
+                linkTo(methodOn(UserWalletController.class)
+                        .all(userId)
+                ).withSelfRel()
         );
     }
     // end::get-aggregate-root[]
@@ -63,7 +63,9 @@ public class UserWalletController {
 
         return CollectionModel.of(
                 wallets,
-                linkTo(methodOn(UserWalletController.class).all(user.getId())).withSelfRel()
+                linkTo(methodOn(UserWalletController.class)
+                        .all(user.getId())
+                ).withSelfRel()
         );
     }
 }

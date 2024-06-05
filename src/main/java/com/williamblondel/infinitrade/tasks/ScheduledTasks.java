@@ -24,7 +24,10 @@ public class ScheduledTasks {
         this.pairRepository = pairRepository;
     }
 
-    @Scheduled(fixedRateString = "${get.prices.fixed-rate.in.milliseconds}", initialDelayString = "${get.prices.initial-delay.in.milliseconds}")
+    @Scheduled(
+            fixedRateString = "${get.prices.fixed-rate.in.milliseconds}",
+            initialDelayString = "${get.prices.initial-delay.in.milliseconds}"
+    )
     public void getPairPrices() {
         logger.info("Getting pair prices...");
         WebClient client = WebClient.create();
@@ -105,7 +108,8 @@ public class ScheduledTasks {
             }
 
             // let's update the pair
-            logger.debug("Updating prices of pair {} from {} {} to {} {}.", pair.getPairCode(), pair.getBidPrice(), pair.getAskPrice(), newBidPrice, newAskPrice);
+            logger.debug("Updating prices of pair {} from {} {} to {} {}.", pair.getPairCode(), pair.getBidPrice(),
+                    pair.getAskPrice(), newBidPrice, newAskPrice);
             pair.setBidPrice(newBidPrice);
             pair.setAskPrice(newAskPrice);
             pairRepository.save(pair);

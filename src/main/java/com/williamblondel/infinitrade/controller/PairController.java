@@ -6,9 +6,9 @@ import com.williamblondel.infinitrade.model.Pair;
 import com.williamblondel.infinitrade.repository.PairRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +35,11 @@ public class PairController {
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(pairs, linkTo(methodOn(PairController.class).all()).withSelfRel());
+        return CollectionModel.of(
+                pairs,
+                linkTo(methodOn(PairController.class)
+                        .all()
+                ).withSelfRel());
     }
     // end::get-aggregate-root[]
 

@@ -1,14 +1,14 @@
 package com.williamblondel.infinitrade.controller;
 
 import com.williamblondel.infinitrade.assembler.UserModelAssembler;
-import com.williamblondel.infinitrade.exception.PairNotFoundException;
 import com.williamblondel.infinitrade.exception.UserNotFoundException;
-import com.williamblondel.infinitrade.model.Pair;
 import com.williamblondel.infinitrade.model.User;
 import com.williamblondel.infinitrade.repository.UserRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +36,9 @@ public class UserController {
 
         return CollectionModel.of(
                 users,
-                linkTo(methodOn(UserController.class).all()).withSelfRel()
+                linkTo(methodOn(UserController.class)
+                        .all()
+                ).withSelfRel()
         );
     }
     // end::get-aggregate-root[]
