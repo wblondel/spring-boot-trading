@@ -35,17 +35,17 @@ public class CurrencyController {
 
     // Aggregate root
     // tag::get-aggregate-root[]
-    @GetMapping({"/cryptocurrencies", "/cryptocurrencies/"})
+    @GetMapping({"/currencies", "/currencies/"})
     public CollectionModel<EntityModel<Currency>> all() {
-        List<EntityModel<Currency>> cryptocurrencies = repository.findAll().stream()
+        List<EntityModel<Currency>> currencies = repository.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(cryptocurrencies, linkTo(methodOn(CurrencyController.class).all()).withSelfRel());
+        return CollectionModel.of(currencies, linkTo(methodOn(CurrencyController.class).all()).withSelfRel());
     }
     // end::get-aggregate-root[]
 
-    @PostMapping({"/cryptocurrencies", "/cryptocurrencies/"})
+    @PostMapping({"/currencies", "/currencies/"})
     ResponseEntity<?> newCryptocurrency(@RequestBody Currency newCurrency) {
         EntityModel<Currency> entityModel = assembler.toModel(repository.save(newCurrency));
 
@@ -54,7 +54,7 @@ public class CurrencyController {
                 .body(entityModel);
     }
 
-    @GetMapping("/cryptocurrencies/{id}")
+    @GetMapping("/currencies/{id}")
     public EntityModel<Currency> one(@PathVariable Long id) {
 
         Currency currency = repository.findById(id)
@@ -63,7 +63,7 @@ public class CurrencyController {
         return assembler.toModel(currency);
     }
 
-    @PutMapping("/cryptocurrencies/{id}")
+    @PutMapping("/currencies/{id}")
     ResponseEntity<?> replaceCryptocurrency(@PathVariable Long id, @RequestBody Currency newCurrency) {
         Currency updatedCurrency = repository.findById(id)
                 .map(cryptocurrency -> {
@@ -86,7 +86,7 @@ public class CurrencyController {
                 .body(entityModel);
     }
 
-    @DeleteMapping("/cryptocurrencies/{id}")
+    @DeleteMapping("/currencies/{id}")
     ResponseEntity<?> deleteCryptocurrency(@PathVariable Long id) {
         repository.deleteById(id);
 
