@@ -2,6 +2,7 @@ package com.williamblondel.infinitrade.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "transactions")
@@ -122,5 +123,38 @@ public class Transaction {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transaction)) return false;
+
+        Transaction transaction = (Transaction) o;
+
+        return Objects.equals(this.id, transaction.id) &&
+                Objects.equals(this.user, transaction.user) &&
+                Objects.equals(this.wallet, transaction.wallet) &&
+                Objects.equals(this.currency, transaction.currency) &&
+                Objects.equals(this.amount, transaction.amount) &&
+                Objects.equals(this.transactionType, transaction.transactionType) &&
+                Objects.equals(this.status, transaction.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.user, this.wallet, this.currency, this.amount, this.transactionType, this.status);
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" + "id=" + this.id +
+                ", user='" + this.user + '\'' +
+                ", wallet='" + this.wallet + '\'' +
+                ", currency='" + this.currency + '\'' +
+                ", amount='" + this.amount + '\'' +
+                ", transactionType='" + this.transactionType + '\'' +
+                ", status='" + this.status + '\'' +
+                '}';
     }
 }
