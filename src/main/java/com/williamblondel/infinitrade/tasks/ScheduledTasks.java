@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class ScheduledTasks {
-    // TODO: refactor this code into Services!
     private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -29,6 +28,9 @@ public class ScheduledTasks {
             initialDelayString = "${get.prices.initial-delay.in.milliseconds}"
     )
     public void getPairPrices() {
+        // TODO: refactor this code into Services!
+        //  Proper error handling & timeout handling should also be done.
+
         logger.info("Getting pair prices...");
         WebClient client = WebClient.create();
 
