@@ -76,12 +76,12 @@ public class LoadDatabase {
             )));
 
             // Create transactions to match wallets
-            Transaction johnDoeUsdtDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdtWallet, usdtCurrency, 50000.0, "deposit", "completed");
-            Transaction johnDoeUsdcDepositTransaction = new Transaction(johnDoeUser, johnDoeUsdcWallet, usdcCurrency, 25000.0, "deposit", "completed");
-            Transaction johnDoeBtcDepositTransaction = new Transaction(johnDoeUser, johnDoeBtcWallet, btcCurrency, 0.0033, "deposit", "completed");
-            Transaction janeDoeUsdtDepositTransaction = new Transaction(janeDoeUser, janeDoeUsdtWallet, usdtCurrency, 1.0, "deposit", "completed");
-            Transaction janeDoeUsdcDepositTransaction = new Transaction(janeDoeUser, janeDoeUsdcWallet, usdcCurrency, 2.0, "deposit", "completed");
-            Transaction janeDoeBtcDepositTransaction = new Transaction(janeDoeUser, janeDoeBtcWallet, btcCurrency, 0.001, "deposit", "completed");
+            Transaction johnDoeUsdtDepositTransaction = new Transaction(johnDoeUsdtWallet, 50000.0, "deposit", "completed");
+            Transaction johnDoeUsdcDepositTransaction = new Transaction(johnDoeUsdcWallet, 25000.0, "deposit", "completed");
+            Transaction johnDoeBtcDepositTransaction = new Transaction(johnDoeBtcWallet, 0.0033, "deposit", "completed");
+            Transaction janeDoeUsdtDepositTransaction = new Transaction(janeDoeUsdtWallet, 1.0, "deposit", "completed");
+            Transaction janeDoeUsdcDepositTransaction = new Transaction(janeDoeUsdcWallet, 2.0, "deposit", "completed");
+            Transaction janeDoeBtcDepositTransaction = new Transaction(janeDoeBtcWallet, 0.001, "deposit", "completed");
 
             // Save transactions
             log.info("Preloading {}", transactionRepository.saveAll(List.of(

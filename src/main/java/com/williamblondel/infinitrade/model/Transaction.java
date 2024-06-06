@@ -14,16 +14,8 @@ public class Transaction {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "wallet_id", nullable = false)
     private Wallet wallet;
-
-    @ManyToOne
-    @JoinColumn(name = "currency_id", nullable = false)
-    private Currency currency;
 
     @Column(nullable = false)
     private Double amount;
@@ -42,10 +34,8 @@ public class Transaction {
 
     public Transaction() {}
 
-    public Transaction(User user, Wallet wallet, Currency currency, Double amount, String transactionType, String status) {
-        this.user = user;
+    public Transaction(Wallet wallet, Double amount, String transactionType, String status) {
         this.wallet = wallet;
-        this.currency = currency;
         this.amount = amount;
         this.transactionType = transactionType; // 'deposit' or 'withdrawal'
         this.status = status; // 'pending', 'completed', or 'failed'
@@ -62,28 +52,12 @@ public class Transaction {
         this.id = id;
     }
 
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Wallet getWallet() {
         return this.wallet;
     }
 
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
-    }
-
-    public Currency getCurrency() {
-        return this.currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
     }
 
     public Double getAmount() {
@@ -134,9 +108,7 @@ public class Transaction {
         Transaction transaction = (Transaction) o;
 
         return Objects.equals(this.id, transaction.id) &&
-                Objects.equals(this.user, transaction.user) &&
                 Objects.equals(this.wallet, transaction.wallet) &&
-                Objects.equals(this.currency, transaction.currency) &&
                 Objects.equals(this.amount, transaction.amount) &&
                 Objects.equals(this.transactionType, transaction.transactionType) &&
                 Objects.equals(this.status, transaction.status);
@@ -144,15 +116,13 @@ public class Transaction {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.user, this.wallet, this.currency, this.amount, this.transactionType, this.status);
+        return Objects.hash(this.id, this.wallet, this.amount, this.transactionType, this.status);
     }
 
     @Override
     public String toString() {
         return "Transaction{" + "id=" + this.id +
-                ", user='" + this.user + '\'' +
                 ", wallet='" + this.wallet + '\'' +
-                ", currency='" + this.currency + '\'' +
                 ", amount='" + this.amount + '\'' +
                 ", transactionType='" + this.transactionType + '\'' +
                 ", status='" + this.status + '\'' +
