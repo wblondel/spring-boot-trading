@@ -42,7 +42,8 @@ public class Pair {
     @JsonIgnore
     private List<Trade> trades;
 
-    public Pair() {}
+    public Pair() {
+    }
 
     public Pair(Currency baseCurrency, Currency quoteCurrency, Double bidPrice, Double askPrice) {
         this.baseCurrency = baseCurrency;

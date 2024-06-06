@@ -36,7 +36,8 @@ public class Transaction {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Transaction() {}
+    public Transaction() {
+    }
 
     public Transaction(Wallet wallet, Double amount, TransactionTypeEnum type, TransactionStatusEnum status) {
         this.wallet = wallet;

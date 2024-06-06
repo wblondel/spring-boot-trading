@@ -23,7 +23,8 @@ public class LoadDatabase {
             CurrencyRepository currencyRepository,
             PairRepository pairRepository,
             WalletRepository walletRepository,
-            TransactionRepository transactionRepository, TradeRepository tradeRepository) {
+            TransactionRepository transactionRepository,
+            TradeRepository tradeRepository) {
         return args -> {
             // Create user
             User johnDoeUser = new User("john.doe", "john.doe@example.test", "aaa");
@@ -81,7 +82,7 @@ public class LoadDatabase {
             Pair btcUsdtPair = new Pair(btcCurrency, usdtCurrency, 71012.44, 71012.45);
             Pair ethBtcPair = new Pair(ethCurrency, btcCurrency, 1.0, 1.01);
             Pair usdcUsdtPair = new Pair(usdcCurrency, usdtCurrency, 0.9991, 0.9992);
-            Pair btcUsdcPair = new Pair(btcCurrency, usdcCurrency,71012.44, 71012.45);
+            Pair btcUsdcPair = new Pair(btcCurrency, usdcCurrency, 71012.44, 71012.45);
             Pair ethUsdcPair = new Pair(ethCurrency, usdcCurrency, 3500.21, 3502.12);
 
             // Save pairs

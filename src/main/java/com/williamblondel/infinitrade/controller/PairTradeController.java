@@ -56,7 +56,7 @@ public class PairTradeController {
                         .all(pairCode)
                 ).withSelfRel()
         );
-    };
+    }
     // end::get-aggregate-root[]
 
     @PostMapping({"/pairs/{pairCode}/trades", "/pairs/{pairCode}/trades/"})

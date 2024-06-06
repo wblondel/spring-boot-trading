@@ -36,22 +36,23 @@ public class Trade {
     @Column(nullable = false)
     private Double price;
 
-  //  @Column(nullable = false)
-  //  private Double fee;
+    //  @Column(nullable = false)
+    //  private Double fee;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public Trade() {}
+    public Trade() {
+    }
 
     public Trade(User user, /*Order order,*/ Pair pair, TradeTypeEnum tradeType, Double amount, Double price/*, Double fee*/) {
         this.user = user;
         //this.order = order;
         this.pair = pair;
-        this.tradeType = tradeType; // 'BUY' or 'SELL'
+        this.tradeType = tradeType;
         this.amount = amount; // amount of crypto
         this.price = price; // price per unit of crypto
-       // this.fee = fee;
+        // this.fee = fee;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -119,10 +120,10 @@ public class Trade {
         return this;
     }
 
- //   public Double getFee() {
- //       return this.fee;
+//    public Double getFee() {
+//        return this.fee;
 //    }
-
+//
 //    public Trade setFee(Double fee) {
 //        this.fee = fee;
 //        return this;

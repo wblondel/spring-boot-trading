@@ -38,7 +38,8 @@ public class User {
     @JsonIgnore
     private List<Trade> trades;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String username, String email, String passwordHash) {
         this.username = username;

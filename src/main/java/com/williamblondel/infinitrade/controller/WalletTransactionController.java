@@ -22,7 +22,8 @@ public class WalletTransactionController {
     private final WalletRepository walletRepository;
     private final TransactionModelAssembler transactionAssembler;
 
-    public WalletTransactionController(WalletRepository walletRepository, TransactionModelAssembler transactionAssembler) {
+    public WalletTransactionController(WalletRepository walletRepository,
+                                       TransactionModelAssembler transactionAssembler) {
         this.walletRepository = walletRepository;
         this.transactionAssembler = transactionAssembler;
     }

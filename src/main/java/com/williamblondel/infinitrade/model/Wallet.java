@@ -37,7 +37,8 @@ public class Wallet {
     @JsonIgnore
     private List<Transaction> transactions;
 
-    public Wallet() {}
+    public Wallet() {
+    }
 
     public Wallet(User user, Currency currency, Double balance) {
         this.user = user;

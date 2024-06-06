@@ -31,7 +31,8 @@ public class Currency {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Currency() {}
+    public Currency() {
+    }
 
     public Currency(String ticker, String name, String description, String website) {
         this.ticker = ticker;
