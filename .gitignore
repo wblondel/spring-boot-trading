@@ -40,3 +40,4 @@ src/main/java/com/williamblondel/infinitrade/advice/OrderNotFoundAdvice.java
 src/main/java/com/williamblondel/infinitrade/exception/OrderNotFoundException.java
 src/main/java/com/williamblondel/infinitrade/model/Order.java
 src/main/java/com/williamblondel/infinitrade/repository/OrderRepository.java
+src/main/java/com/williamblondel/infinitrade/handler/OrderNotFoundHandler.java
