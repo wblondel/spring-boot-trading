@@ -2,6 +2,7 @@
 ![Banner](https://exc-prodp.s3.eu-west-2.amazonaws.com/uploads/trading-psychology-in-forex-rules-and-tips-for-traders.png)
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](./README.md)
+[![Java CI with Gradle](https://github.com/wblondel/spring-boot-trading/actions/workflows/gradle.yml/badge.svg)](https://github.com/wblondel/spring-boot-trading/actions/workflows/gradle.yml)
 
 The InfiniTrade trading platform is an experimental project.
 
