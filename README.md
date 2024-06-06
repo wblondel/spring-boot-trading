@@ -83,7 +83,7 @@ A Wallet has many Transactions.
 - Users can view all Pairs available on the platform
 - Users can view a specific Pair available on the platform
 - Users can view all Trades of a specific Pair
-- Users can trade a specific Pair (buy and sell)
+- Users can trade a specific Pair (buy and sell), provided they have sufficient balance in their Wallet
 
 ### Trade
 - Users can view all Trades
