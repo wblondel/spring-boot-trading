@@ -20,7 +20,7 @@ public class LoadDatabase {
             CurrencyRepository currencyRepository,
             PairRepository pairRepository,
             WalletRepository walletRepository,
-            TransactionRepository transactionRepository) {
+            TransactionRepository transactionRepository, TradeRepository tradeRepository) {
         return args -> {
             // Create user
             User johnDoeUser = new User("john.doe", "john.doe@example.test", "aaa");
@@ -91,6 +91,21 @@ public class LoadDatabase {
                     janeDoeUsdtDepositTransaction,
                     janeDoeUsdcDepositTransaction,
                     janeDoeBtcDepositTransaction
+            )));
+
+            // Create trades
+            Trade johnDoeTrade1 = new Trade(johnDoeUser, ethUsdtPair, "sell", 1.0, 1.0, 0.2);
+            Trade johnDoeTrade2 = new Trade(johnDoeUser, btcUsdtPair, "buy", 1.0, 1.0, 0.2);
+
+            Trade janeDoeTrade1 = new Trade(janeDoeUser, btcUsdtPair, "sell", 1.0, 1.0, 0.2);
+            Trade janeDoeTrade2 = new Trade(janeDoeUser, btcUsdtPair, "buy", 1.0, 1.0, 0.2);
+
+            // Save trades
+            log.info("Preloading {}", tradeRepository.saveAll(List.of(
+                    johnDoeTrade1,
+                    johnDoeTrade2,
+                    janeDoeTrade1,
+                    janeDoeTrade2
             )));
         };
     }
