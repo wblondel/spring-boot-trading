@@ -40,7 +40,6 @@ public class TradeService {
         Double price = determinePrice(tradeType, tradePair);
         Double totalInQuoteCurrency = trade.getAmount() * price;
 
-
         if (tradeType == TradeTypeEnum.BUY) {
             checkSufficientBalance(walletQuoteCurrency, totalInQuoteCurrency);
             walletService.deductFromWallet(walletQuoteCurrency, totalInQuoteCurrency);
