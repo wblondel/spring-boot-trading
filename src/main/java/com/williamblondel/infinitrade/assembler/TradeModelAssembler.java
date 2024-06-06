@@ -1,5 +1,6 @@
 package com.williamblondel.infinitrade.assembler;
 
+import com.williamblondel.infinitrade.controller.PairController;
 import com.williamblondel.infinitrade.controller.TradeController;
 import com.williamblondel.infinitrade.model.Trade;
 import org.springframework.hateoas.EntityModel;
@@ -20,6 +21,9 @@ public class TradeModelAssembler implements RepresentationModelAssembler<Trade, 
                 linkTo(methodOn(TradeController.class)
                         .one(trade.getId())
                 ).withSelfRel(),
+                linkTo(methodOn(PairController.class)
+                        .one(trade.getPair().getId())
+                ).withRel("pair"),
                 linkTo(methodOn(TradeController.class)
                         .all()
                 ).withRel("trades"));

@@ -34,6 +34,10 @@ public class User {
     @JsonIgnore
     private List<Wallet> wallets;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Trade> trades;
+
     public User() {}
 
     public User(String username, String email, String passwordHash) {
@@ -99,6 +103,14 @@ public class User {
 
     public void setWallets(List<Wallet> wallets) {
         this.wallets = wallets;
+    }
+
+    public List<Trade> getTrades() {
+        return this.trades;
+    }
+
+    public void setTrades(List<Trade> trades) {
+        this.trades = trades;
     }
 
     @Override

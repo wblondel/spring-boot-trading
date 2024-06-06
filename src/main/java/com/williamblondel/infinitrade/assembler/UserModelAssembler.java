@@ -1,6 +1,7 @@
 package com.williamblondel.infinitrade.assembler;
 
 import com.williamblondel.infinitrade.controller.UserController;
+import com.williamblondel.infinitrade.controller.UserTradeController;
 import com.williamblondel.infinitrade.controller.UserWalletController;
 import com.williamblondel.infinitrade.model.User;
 import org.springframework.hateoas.EntityModel;
@@ -21,11 +22,15 @@ public class UserModelAssembler implements RepresentationModelAssembler<User, En
                 linkTo(methodOn(UserController.class)
                         .one(user.getId())
                 ).withSelfRel(),
-                linkTo(methodOn(UserController.class)
-                        .all()
-                ).withRel("users"),
                 linkTo(methodOn(UserWalletController.class)
                         .all(user.getId())
-                ).withRel("wallets"));
+                ).withRel("wallets"),
+                linkTo(methodOn(UserTradeController.class)
+                        .all(user.getId())
+                ).withRel("trades"),
+                linkTo(methodOn(UserController.class)
+                        .all()
+                ).withRel("users")
+        );
     }
 }
