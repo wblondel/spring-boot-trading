@@ -17,7 +17,7 @@ API collections are available for you to quickly test the API:
 
 ## Limitations and known bugs
 - No roles, permissions, or authentication: we assume the authenticated user is User 1, and this user can access all endpoints
-- I made the mistake of starting the project by using doubles, which lead to accuracy problems. I should store the amounts in the currency's smallest unit using a BigInteger, and store the smallest unit (aka precision) on each Currency. This won't take time to fix but I am running out of time.
+- I made the mistake of starting the project by using doubles, which lead to accuracy problems. I should store the amounts in the currency's smallest unit using a BigInteger, and store the smallest unit (aka precision) on each Currency. This won't take time to fix, but I am running out of time.
 - The logic inside the `getPairPrices()` scheduled task should be extracted to a Service.
 - There is no proper error handling and timeout handling inside the `getPairPrices()` task.
 - No tests were written.
