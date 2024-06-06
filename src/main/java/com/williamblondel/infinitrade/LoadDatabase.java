@@ -27,9 +27,9 @@ public class LoadDatabase {
             TradeRepository tradeRepository) {
         return args -> {
             // Create user
-            User johnDoeUser = new User("john.doe", "john.doe@example.test", "aaa");
-            User janeDoeUser = new User("jane.doe", "jane.doe@example.test", "bbb");
-            User davidDoeUser = new User("david.doe", "david.doe@example.test", "bbb");
+            User johnDoeUser = new User("john.doe", "john.doe@example.test");
+            User janeDoeUser = new User("jane.doe", "jane.doe@example.test");
+            User davidDoeUser = new User("david.doe", "david.doe@example.test");
 
             // Save users
             log.info("Preloading {}", userRepository.saveAll(List.of(johnDoeUser, janeDoeUser, davidDoeUser)));
@@ -78,12 +78,12 @@ public class LoadDatabase {
             )));
 
             // Create pairs
-            Pair ethUsdtPair = new Pair(ethCurrency, usdtCurrency, 3500.21, 3502.12);
-            Pair btcUsdtPair = new Pair(btcCurrency, usdtCurrency, 71012.44, 71012.45);
-            Pair ethBtcPair = new Pair(ethCurrency, btcCurrency, 1.0, 1.01);
-            Pair usdcUsdtPair = new Pair(usdcCurrency, usdtCurrency, 0.9991, 0.9992);
-            Pair btcUsdcPair = new Pair(btcCurrency, usdcCurrency, 71012.44, 71012.45);
-            Pair ethUsdcPair = new Pair(ethCurrency, usdcCurrency, 3500.21, 3502.12);
+            Pair ethUsdtPair = new Pair(ethCurrency, usdtCurrency, "ETHUSDT", 3500.21, 3502.12);
+            Pair btcUsdtPair = new Pair(btcCurrency, usdtCurrency, "BTCUSDT", 71012.44, 71012.45);
+            Pair ethBtcPair = new Pair(ethCurrency, btcCurrency, "ETHBTC", 1.0, 1.01);
+            Pair usdcUsdtPair = new Pair(usdcCurrency, usdtCurrency, "USDCUSDT", 0.9991, 0.9992);
+            Pair btcUsdcPair = new Pair(btcCurrency, usdcCurrency, "BTCUSDC", 71012.44, 71012.45);
+            Pair ethUsdcPair = new Pair(ethCurrency, usdcCurrency, "ETHUSDC", 3500.21, 3502.12);
 
             // Save pairs
             log.info("Preloading {}", pairRepository.saveAll(List.of(

@@ -16,8 +16,11 @@ public class CreatePairTradeRequest {
     private Double amount;
 
     public Trade toTrade() {
-        return new Trade()
-                .setTradeType(tradeType)
-                .setAmount(amount);
+        Trade trade = new Trade();
+
+        trade.setTradeType(tradeType);
+        trade.setAmount(amount);
+
+        return trade;
     }
 }
