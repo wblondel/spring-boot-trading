@@ -1,0 +1,747 @@
+{
+  "info": {
+    "name": "InfiniTrade",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "currencies",
+      "item": [
+        {
+          "name": "Create Currency WGB",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://127.0.0.1:38080/currencies",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"WGB Coin\",\n  \"website\": \"https://williamblondel.com\",\n  \"ticker\": \"WGB\",\n  \"description\": \"The WGB Coin is the latest innovation from the WGB Corporation.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get All Currencies",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/currencies"
+          }
+        },
+        {
+          "name": "Get Currency BTC",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/currencies/BTC"
+          }
+        },
+        {
+          "name": "Get Currency ETH",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/currencies/ETH"
+          }
+        },
+        {
+          "name": "Get Currency USDT",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/currencies/USDT"
+          }
+        }
+      ]
+    },
+    {
+      "name": "me",
+      "item": [
+        {
+          "name": "Get My Trades",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/me/trades"
+          }
+        },
+        {
+          "name": "Get My User",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/me"
+          }
+        },
+        {
+          "name": "Get My Wallets",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/me/wallets"
+          }
+        }
+      ]
+    },
+    {
+      "name": "pairs",
+      "item": [
+        {
+          "name": "Get All Pairs",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs"
+          }
+        },
+        {
+          "name": "Get Pair BTCUSDC",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/BTCUSDC"
+          }
+        },
+        {
+          "name": "Get Pair BTCUSDT",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/BTCUSDT"
+          }
+        },
+        {
+          "name": "Get Pair ETHBTC",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/ETHBTC"
+          }
+        },
+        {
+          "name": "Get Pair ETHUSDT",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/ETHUSDT"
+          }
+        },
+        {
+          "name": "Get Pair ETHUSDC",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/ETHUSDC"
+          }
+        },
+        {
+          "name": "Get Pair USDCUSDT",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/pairs/USDCUSDT"
+          }
+        },
+        {
+          "name": "trades",
+          "item": [
+            {
+              "name": "Create Buy Trade for BTCUSDT",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "disabled": false,
+                    "type": "default"
+                  }
+                ],
+                "url": "http://127.0.0.1:38080/pairs/BTCUSDT/trades",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.1,\n  \"tradeType\": \"BUY\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Create Buy Trade for ETHUSDT",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "disabled": false,
+                    "type": "default"
+                  }
+                ],
+                "url": "http://127.0.0.1:38080/pairs/ETHUSDT/trades",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.1,\n  \"tradeType\": \"BUY\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Create Sell Trade for BTCUSDT",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "disabled": false,
+                    "type": "default"
+                  }
+                ],
+                "url": "http://127.0.0.1:38080/pairs/BTCUSDT/trades",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.1,\n  \"tradeType\": \"SELL\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Create Sell Trade for ETHUSDT",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "disabled": false,
+                    "type": "default"
+                  }
+                ],
+                "url": "http://127.0.0.1:38080/pairs/ETHUSDT/trades",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.1,\n  \"tradeType\": \"SELL\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "Get Trades for BTCUSDT",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/pairs/BTCUSDT/trades"
+              }
+            },
+            {
+              "name": "Get Trades for ETHUSDT",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/pairs/ETHUSDT/trades"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trades",
+      "item": [
+        {
+          "name": "Get All Trades",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/trades",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Trade 1",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/trades/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Trade 2",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/trades/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Trade 3",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/trades/3",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/users"
+          }
+        },
+        {
+          "name": "Get User 1",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/users/1"
+          }
+        },
+        {
+          "name": "Get User 2",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/users/2"
+          }
+        },
+        {
+          "name": "Get User 3",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://127.0.0.1:38080/users/3"
+          }
+        },
+        {
+          "name": "trades",
+          "item": [
+            {
+              "name": "Get Trades for User 1",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/1/trades"
+              }
+            },
+            {
+              "name": "Get Trades for User 2",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/2/trades"
+              }
+            },
+            {
+              "name": "Get Trades for User 3",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/3/trades"
+              }
+            }
+          ]
+        },
+        {
+          "name": "wallets",
+          "item": [
+            {
+              "name": "Get Wallets for User 1",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/1/wallets"
+              }
+            },
+            {
+              "name": "Get Wallets for User 2",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/2/wallets"
+              }
+            },
+            {
+              "name": "Get Wallets for User 3",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/users/3/wallets"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "transactions",
+      "item": [
+        {
+          "name": "Get All Transactions",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/transactions",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Transaction 1",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/transactions/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Transaction 2",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/transactions/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Transaction 3",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/transactions/3",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "wallets",
+      "item": [
+        {
+          "name": "Get All Wallets",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/wallets",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Wallet 1",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/wallets/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Wallet 2",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/wallets/2",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Get Wallet 3",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "disabled": false,
+                "type": "default"
+              }
+            ],
+            "url": "http://127.0.0.1:38080/wallets/3",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1.12,\n  \"tradeType\": \"buy\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "transactions",
+          "item": [
+            {
+              "name": "Get Transactions for Wallet 1",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/wallets/1/transactions"
+              }
+            },
+            {
+              "name": "Get Transactions for Wallet 2",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/wallets/2/transactions"
+              }
+            },
+            {
+              "name": "Get Transactions for Wallet 3",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "http://127.0.0.1:38080/wallets/3/transactions"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bruno",
+      "event": []
+    }
+  ],
+  "variable": []
+}
