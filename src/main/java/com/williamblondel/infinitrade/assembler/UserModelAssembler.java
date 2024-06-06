@@ -24,10 +24,10 @@ public class UserModelAssembler implements RepresentationModelAssembler<User, En
                 ).withSelfRel(),
                 linkTo(methodOn(UserWalletController.class)
                         .all(user.getId())
-                ).withRel("wallets"),
+                ).withRel("user-wallets"),
                 linkTo(methodOn(UserTradeController.class)
                         .all(user.getId())
-                ).withRel("trades"),
+                ).withRel("user-trades"),
                 linkTo(methodOn(UserController.class)
                         .all()
                 ).withRel("users")

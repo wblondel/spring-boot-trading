@@ -27,7 +27,7 @@ public class WalletModelAssembler implements CustomRepresentationModelAssembler<
                 ).withSelfRel(),
                 linkTo(methodOn(WalletTransactionController.class)
                         .all(wallet.getId())
-                ).withRel("transactions"),
+                ).withRel("wallet-transactions"),
                 linkTo(methodOn(UserController.class)
                         .one(wallet.getUser().getId())
                 ).withRel("user")

@@ -52,11 +52,11 @@ public class PairController {
 //                .body(entityModel);
 //    }
 
-    @GetMapping("/pairs/{id}")
-    public EntityModel<Pair> one(@PathVariable Long id) {
+    @GetMapping("/pairs/{pairCode}")
+    public EntityModel<Pair> one(@PathVariable String pairCode) {
 
-        Pair pair = repository.findById(id)
-                .orElseThrow(() -> new PairNotFoundException(id));
+        Pair pair = repository.findByPairCode(pairCode)
+                .orElseThrow(() -> new PairNotFoundException(pairCode));
 
         return assembler.toModel(pair);
     }

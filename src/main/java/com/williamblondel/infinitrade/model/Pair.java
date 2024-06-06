@@ -1,8 +1,10 @@
 package com.williamblondel.infinitrade.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 // All currency pairs available for trading on the platform
@@ -36,7 +38,21 @@ public class Pair {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "pair")
+    @JsonIgnore
+    private List<Trade> trades;
+
     public Pair() {}
+
+    public Pair(Currency baseCurrency, Currency quoteCurrency, Double bidPrice, Double askPrice) {
+        this.baseCurrency = baseCurrency;
+        this.quoteCurrency = quoteCurrency;
+        this.bidPrice = bidPrice;
+        this.askPrice = askPrice;
+        this.pairCode = baseCurrency.getTicker() + quoteCurrency.getTicker();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
 
     public Pair(Currency baseCurrency, Currency quoteCurrency) {
         this.baseCurrency = baseCurrency;
@@ -108,6 +124,14 @@ public class Pair {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Trade> getTrades() {
+        return this.trades;
+    }
+
+    public void setTrades(List<Trade> trades) {
+        this.trades = trades;
     }
 
     @Override

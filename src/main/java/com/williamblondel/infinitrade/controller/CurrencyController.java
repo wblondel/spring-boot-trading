@@ -52,18 +52,18 @@ public class CurrencyController {
                 .body(entityModel);
     }
 
-    @GetMapping("/currencies/{id}")
-    public EntityModel<Currency> one(@PathVariable Long id) {
+    @GetMapping("/currencies/{ticker}")
+    public EntityModel<Currency> one(@PathVariable String ticker) {
 
-        Currency currency = repository.findById(id)
-                .orElseThrow(() -> new CurrencyNotFoundException(id));
+        Currency currency = repository.findFirstByTicker(ticker)
+                .orElseThrow(() -> new CurrencyNotFoundException(ticker));
 
         return assembler.toModel(currency);
     }
 
-    @PutMapping("/currencies/{id}")
-    ResponseEntity<?> replaceCryptocurrency(@PathVariable Long id, @RequestBody Currency newCurrency) {
-        Currency updatedCurrency = repository.findById(id)
+    @PutMapping("/currencies/{ticker}")
+    ResponseEntity<?> replaceCryptocurrency(@PathVariable String ticker, @RequestBody Currency newCurrency) {
+        Currency updatedCurrency = repository.findFirstByTicker(ticker)
                 .map(cryptocurrency -> {
                     cryptocurrency.setTicker(newCurrency.getTicker());
                     cryptocurrency.setName(newCurrency.getName());
@@ -73,7 +73,7 @@ public class CurrencyController {
                     return repository.save(cryptocurrency);
                 })
                 .orElseGet(() -> {
-                    newCurrency.setId(id);
+                    newCurrency.setTicker(ticker);
                     return repository.save(newCurrency);
                 });
 
@@ -84,9 +84,9 @@ public class CurrencyController {
                 .body(entityModel);
     }
 
-    @DeleteMapping("/currencies/{id}")
-    ResponseEntity<?> deleteCryptocurrency(@PathVariable Long id) {
-        repository.deleteById(id);
+    @DeleteMapping("/currencies/{ticker}")
+    ResponseEntity<?> deleteCryptocurrency(@PathVariable String ticker) {
+        repository.deleteByTicker(ticker);
 
         return ResponseEntity.noContent().build();
     }

@@ -1,5 +1,6 @@
 package com.williamblondel.infinitrade.model;
 
+import com.williamblondel.infinitrade.enumeration.TradeTypeEnum;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -25,8 +26,9 @@ public class Trade {
     @JoinColumn(name = "pair_id", nullable = false)
     private Pair pair;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private String tradeType;
+    private TradeTypeEnum tradeType;
 
     @Column(nullable = false)
     private Double amount;
@@ -34,22 +36,22 @@ public class Trade {
     @Column(nullable = false)
     private Double price;
 
-    @Column(nullable = false)
-    private Double fee;
+  //  @Column(nullable = false)
+  //  private Double fee;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
     public Trade() {}
 
-    public Trade(User user, /*Order order,*/ Pair pair, String tradeType, Double amount, Double price, Double fee) {
+    public Trade(User user, /*Order order,*/ Pair pair, TradeTypeEnum tradeType, Double amount, Double price/*, Double fee*/) {
         this.user = user;
         //this.order = order;
         this.pair = pair;
-        this.tradeType = tradeType; // 'buy' or 'sell'
+        this.tradeType = tradeType; // 'BUY' or 'SELL'
         this.amount = amount; // amount of crypto
         this.price = price; // price per unit of crypto
-        this.fee = fee;
+       // this.fee = fee;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -58,72 +60,81 @@ public class Trade {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public Trade setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public User getUser() {
         return this.user;
     }
 
-    public void setUser(User user) {
+    public Trade setUser(User user) {
         this.user = user;
+        return this;
     }
 
 //    public Order getOrder() {
 //        return this.order;
 //    }
 //
-//    public void setOrder(Order order) {
+//    public Trade setOrder(Order order) {
 //        this.order = order;
+//        return this;
 //    }
 
     public Pair getPair() {
         return this.pair;
     }
 
-    public void setPair(Pair pair) {
+    public Trade setPair(Pair pair) {
         this.pair = pair;
+        return this;
     }
 
-    public String getTradeType() {
+    public TradeTypeEnum getTradeType() {
         return this.tradeType;
     }
 
-    public void setTradeType(String tradeType) {
+    public Trade setTradeType(TradeTypeEnum tradeType) {
         this.tradeType = tradeType;
+        return this;
     }
 
     public Double getAmount() {
         return this.amount;
     }
 
-    public void setAmount(Double amount) {
+    public Trade setAmount(Double amount) {
         this.amount = amount;
+        return this;
     }
 
     public Double getPrice() {
         return this.price;
     }
 
-    public void setPrice(Double price) {
+    public Trade setPrice(Double price) {
         this.price = price;
+        return this;
     }
 
-    public Double getFee() {
-        return this.fee;
-    }
+ //   public Double getFee() {
+ //       return this.fee;
+//    }
 
-    public void setFee(Double fee) {
-        this.fee = fee;
-    }
+//    public Trade setFee(Double fee) {
+//        this.fee = fee;
+//        return this;
+//    }
 
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public Trade setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+        return this;
     }
 
     @Override
@@ -138,13 +149,13 @@ public class Trade {
                 Objects.equals(this.pair, trade.pair) &&
                 Objects.equals(this.tradeType, trade.tradeType) &&
                 Objects.equals(this.amount, trade.amount) &&
-                Objects.equals(this.price, trade.price) &&
-                Objects.equals(this.fee, trade.fee);
+                Objects.equals(this.price, trade.price) /*&&
+                Objects.equals(this.fee, trade.fee)*/;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.user, this.pair, this.tradeType, this.amount, this.price, this.fee);
+        return Objects.hash(this.id, this.user, this.pair, this.tradeType, this.amount, this.price/*, this.fee*/);
     }
 
     @Override
@@ -155,7 +166,7 @@ public class Trade {
                 ", tradeType='" + this.tradeType + '\'' +
                 ", amount='" + this.amount + '\'' +
                 ", price='" + this.price + '\'' +
-                ", fee='" + this.fee + '\'' +
+                /*", fee='" + this.fee + '\'' +*/
                 '}';
     }
 }

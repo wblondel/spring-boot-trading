@@ -22,7 +22,7 @@ public class TradeModelAssembler implements RepresentationModelAssembler<Trade, 
                         .one(trade.getId())
                 ).withSelfRel(),
                 linkTo(methodOn(PairController.class)
-                        .one(trade.getPair().getId())
+                        .one(trade.getPair().getPairCode())
                 ).withRel("pair"),
                 linkTo(methodOn(TradeController.class)
                         .all()

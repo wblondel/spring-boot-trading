@@ -18,7 +18,7 @@ public class CurrencyModelAssembler implements RepresentationModelAssembler<Curr
         return EntityModel.of(
                 currency,
                 linkTo(methodOn(CurrencyController.class)
-                        .one(currency.getId())
+                        .one(currency.getTicker())
                 ).withSelfRel(),
                 linkTo(methodOn(CurrencyController.class)
                         .all()

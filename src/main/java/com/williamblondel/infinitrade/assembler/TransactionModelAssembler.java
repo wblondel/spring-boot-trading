@@ -1,6 +1,7 @@
 package com.williamblondel.infinitrade.assembler;
 
 import com.williamblondel.infinitrade.controller.TransactionController;
+import com.williamblondel.infinitrade.controller.WalletController;
 import com.williamblondel.infinitrade.model.Transaction;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -20,6 +21,9 @@ public class TransactionModelAssembler implements RepresentationModelAssembler<T
                 linkTo(methodOn(TransactionController.class)
                         .one(transaction.getId())
                 ).withSelfRel(),
+                linkTo(methodOn(WalletController.class)
+                        .one(transaction.getWallet().getId())
+                ).withRel("wallet"),
                 linkTo(methodOn(TransactionController.class)
                         .all()
                 ).withRel("transactions"));

@@ -1,5 +1,7 @@
 package com.williamblondel.infinitrade.model;
 
+import com.williamblondel.infinitrade.enumeration.TransactionStatusEnum;
+import com.williamblondel.infinitrade.enumeration.TransactionTypeEnum;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,11 +22,13 @@ public class Transaction {
     @Column(nullable = false)
     private Double amount;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private String transactionType;
+    private TransactionTypeEnum type;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String status;
+    private TransactionStatusEnum status;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -34,11 +38,11 @@ public class Transaction {
 
     public Transaction() {}
 
-    public Transaction(Wallet wallet, Double amount, String transactionType, String status) {
+    public Transaction(Wallet wallet, Double amount, TransactionTypeEnum type, TransactionStatusEnum status) {
         this.wallet = wallet;
         this.amount = amount;
-        this.transactionType = transactionType; // 'deposit' or 'withdrawal'
-        this.status = status; // 'pending', 'completed', or 'failed'
+        this.type = type;
+        this.status = status;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
@@ -68,19 +72,19 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getTransactionType() {
-        return this.transactionType;
+    public TransactionTypeEnum getType() {
+        return this.type;
     }
 
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
+    public void setType(TransactionTypeEnum transactionType) {
+        this.type = transactionType;
     }
 
-    public String getStatus() {
+    public TransactionStatusEnum getStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TransactionStatusEnum status) {
         this.status = status;
     }
 
@@ -110,13 +114,13 @@ public class Transaction {
         return Objects.equals(this.id, transaction.id) &&
                 Objects.equals(this.wallet, transaction.wallet) &&
                 Objects.equals(this.amount, transaction.amount) &&
-                Objects.equals(this.transactionType, transaction.transactionType) &&
+                Objects.equals(this.type, transaction.type) &&
                 Objects.equals(this.status, transaction.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.wallet, this.amount, this.transactionType, this.status);
+        return Objects.hash(this.id, this.wallet, this.amount, this.type, this.status);
     }
 
     @Override
@@ -124,7 +128,7 @@ public class Transaction {
         return "Transaction{" + "id=" + this.id +
                 ", wallet='" + this.wallet + '\'' +
                 ", amount='" + this.amount + '\'' +
-                ", transactionType='" + this.transactionType + '\'' +
+                ", type='" + this.type + '\'' +
                 ", status='" + this.status + '\'' +
                 '}';
     }
