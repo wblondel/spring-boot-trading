@@ -2,10 +2,10 @@ package com.williamblondel.infinitrade.controller;
 
 import com.williamblondel.infinitrade.assembler.TradeModelAssembler;
 import com.williamblondel.infinitrade.exception.UserNotFoundException;
-import com.williamblondel.infinitrade.model.User;
 import com.williamblondel.infinitrade.model.Trade;
-import com.williamblondel.infinitrade.repository.UserRepository;
+import com.williamblondel.infinitrade.model.User;
 import com.williamblondel.infinitrade.repository.TradeRepository;
+import com.williamblondel.infinitrade.repository.UserRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;

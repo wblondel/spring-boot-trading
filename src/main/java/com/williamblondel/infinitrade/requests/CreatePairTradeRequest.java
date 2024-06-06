@@ -2,7 +2,8 @@ package com.williamblondel.infinitrade.requests;
 
 import com.williamblondel.infinitrade.enumeration.TradeTypeEnum;
 import com.williamblondel.infinitrade.model.Trade;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 @Data

@@ -2,7 +2,10 @@ package com.williamblondel.infinitrade.service;
 
 import com.williamblondel.infinitrade.enumeration.TradeTypeEnum;
 import com.williamblondel.infinitrade.exception.InsufficientBalanceException;
-import com.williamblondel.infinitrade.model.*;
+import com.williamblondel.infinitrade.model.Pair;
+import com.williamblondel.infinitrade.model.Trade;
+import com.williamblondel.infinitrade.model.User;
+import com.williamblondel.infinitrade.model.Wallet;
 import com.williamblondel.infinitrade.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
