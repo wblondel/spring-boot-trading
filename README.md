@@ -1,5 +1,5 @@
 # InfiniTrade trading platform
-![Banner](https://exc-prodp.s3.eu-west-2.amazonaws.com/uploads/trading-psychology-in-forex-rules-and-tips-for-traderssx-thumbnail.png)
+![Banner](https://exc-prodp.s3.eu-west-2.amazonaws.com/uploads/trading-psychology-in-forex-rules-and-tips-for-traders.png)
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](./README.md)
 
