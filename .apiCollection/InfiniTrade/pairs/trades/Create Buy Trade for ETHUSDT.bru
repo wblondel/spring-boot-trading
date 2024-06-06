@@ -1,0 +1,22 @@
+meta {
+  name: Create Buy Trade for ETHUSDT
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://127.0.0.1:38080/pairs/ETHUSDT/trades
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "amount": 0.1,
+    "tradeType": "BUY"
+  }
+}

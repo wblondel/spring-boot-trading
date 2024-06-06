@@ -1,0 +1,22 @@
+meta {
+  name: Get All Trades
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:38080/trades
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "amount": 1.12,
+    "tradeType": "buy"
+  }
+}

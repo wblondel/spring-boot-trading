@@ -1,0 +1,22 @@
+meta {
+  name: Create Buy Trade for BTCUSDT
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://127.0.0.1:38080/pairs/BTCUSDT/trades
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "amount": 0.1,
+    "tradeType": "BUY"
+  }
+}

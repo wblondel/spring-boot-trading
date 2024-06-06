@@ -1,0 +1,22 @@
+meta {
+  name: Create Sell Trade for ETHUSDT
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://127.0.0.1:38080/pairs/ETHUSDT/trades
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+body:json {
+  {
+    "amount": 0.1,
+    "tradeType": "SELL"
+  }
+}
