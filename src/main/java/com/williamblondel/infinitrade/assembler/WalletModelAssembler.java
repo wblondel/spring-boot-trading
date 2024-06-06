@@ -1,5 +1,6 @@
 package com.williamblondel.infinitrade.assembler;
 
+import com.williamblondel.infinitrade.controller.UserController;
 import com.williamblondel.infinitrade.controller.WalletController;
 import com.williamblondel.infinitrade.controller.WalletTransactionController;
 import com.williamblondel.infinitrade.model.Wallet;
@@ -26,7 +27,10 @@ public class WalletModelAssembler implements CustomRepresentationModelAssembler<
                 ).withSelfRel(),
                 linkTo(methodOn(WalletTransactionController.class)
                         .all(wallet.getId())
-                ).withRel("transactions")
+                ).withRel("transactions"),
+                linkTo(methodOn(UserController.class)
+                        .one(wallet.getUser().getId())
+                ).withRel("user")
         );
 
         if (includeAll) {
