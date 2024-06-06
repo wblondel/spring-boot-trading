@@ -102,6 +102,6 @@ A Wallet has many Transactions.
 
 ## Limitations and known bugs
 - No roles, permissions, or authentication: we assume the authenticated user is User 1, and this user can access all endpoints
-- I made the mistake of using doubles, which lead to accuracy problems (I wanted to save time...). I should store the amounts in the currency's smallest unit using a BigInteger, and store the precision on each Currency.
+- I made the mistake of using doubles, which lead to accuracy problems (I wanted to save time...). I should store the amounts in the currency's smallest unit using a BigInteger, and store the smallest unit (aka precision) on each Currency.
 - The logic inside the `getPairPrices()` scheduled task should be extracted to a Service.
 - There is no proper error handling and timeout handling inside the `getPairPrices()` task.
