@@ -5,7 +5,6 @@ import com.williamblondel.infinitrade.exception.UserNotFoundException;
 import com.williamblondel.infinitrade.model.User;
 import com.williamblondel.infinitrade.model.Wallet;
 import com.williamblondel.infinitrade.repository.UserRepository;
-import com.williamblondel.infinitrade.repository.WalletRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +19,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class UserWalletController {
-    private final WalletRepository repository;
     private final WalletModelAssembler assembler;
     private final UserRepository userRepository;
 
-    public UserWalletController(WalletRepository repository, WalletModelAssembler assembler,
-                                UserRepository userRepository) {
-        this.repository = repository;
+    public UserWalletController(WalletModelAssembler assembler, UserRepository userRepository) {
         this.assembler = assembler;
         this.userRepository = userRepository;
     }

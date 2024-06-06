@@ -10,5 +10,7 @@ import java.util.Optional;
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
     Optional<Currency> findFirstByTicker(String ticker);
 
+    boolean existsByTicker(String ticker);
+
     void deleteByTicker(String ticker);
 }

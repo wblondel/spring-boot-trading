@@ -4,6 +4,9 @@ import com.williamblondel.infinitrade.assembler.CurrencyModelAssembler;
 import com.williamblondel.infinitrade.exception.CurrencyNotFoundException;
 import com.williamblondel.infinitrade.model.Currency;
 import com.williamblondel.infinitrade.repository.CurrencyRepository;
+import com.williamblondel.infinitrade.requests.CreateCurrencyRequest;
+import jakarta.persistence.EntityExistsException;
+import jakarta.validation.Valid;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -44,8 +47,15 @@ public class CurrencyController {
     // end::get-aggregate-root[]
 
     @PostMapping({"/currencies", "/currencies/"})
-    ResponseEntity<?> newCryptocurrency(@RequestBody Currency newCurrency) {
-        EntityModel<Currency> entityModel = assembler.toModel(repository.save(newCurrency));
+    ResponseEntity<?> newCryptocurrency(@Valid @RequestBody CreateCurrencyRequest createCurrencyRequest) {
+        Currency currencyToProcess = createCurrencyRequest.toCurrency();
+
+        if (repository.existsByTicker(currencyToProcess.getTicker())) {
+            throw new EntityExistsException("Currency " + currencyToProcess.getTicker() + " already exists");
+        }
+
+        Currency savedCurrency = repository.save(currencyToProcess);
+        EntityModel<Currency> entityModel = assembler.toModel(savedCurrency);
 
         return ResponseEntity
                 .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
@@ -59,35 +69,5 @@ public class CurrencyController {
                 .orElseThrow(() -> new CurrencyNotFoundException(ticker));
 
         return assembler.toModel(currency);
-    }
-
-    @PutMapping("/currencies/{ticker}")
-    ResponseEntity<?> replaceCryptocurrency(@PathVariable String ticker, @RequestBody Currency newCurrency) {
-        Currency updatedCurrency = repository.findFirstByTicker(ticker)
-                .map(cryptocurrency -> {
-                    cryptocurrency.setTicker(newCurrency.getTicker());
-                    cryptocurrency.setName(newCurrency.getName());
-                    cryptocurrency.setDescription(newCurrency.getDescription());
-                    cryptocurrency.setWebsite(newCurrency.getWebsite());
-
-                    return repository.save(cryptocurrency);
-                })
-                .orElseGet(() -> {
-                    newCurrency.setTicker(ticker);
-                    return repository.save(newCurrency);
-                });
-
-        EntityModel<Currency> entityModel = assembler.toModel(updatedCurrency);
-
-        return ResponseEntity
-                .created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri())
-                .body(entityModel);
-    }
-
-    @DeleteMapping("/currencies/{ticker}")
-    ResponseEntity<?> deleteCryptocurrency(@PathVariable String ticker) {
-        repository.deleteByTicker(ticker);
-
-        return ResponseEntity.noContent().build();
     }
 }

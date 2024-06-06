@@ -29,11 +29,11 @@ public class Currency {
     private String ticker;
 
     @NonNull
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 30)
     private String name;
 
     @NonNull
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 10000)
     private String description;
 
     @NonNull

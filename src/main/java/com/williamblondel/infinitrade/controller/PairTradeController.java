@@ -64,7 +64,6 @@ public class PairTradeController {
         Pair pair = pairRepository.findByPairCode(pairCode)
                 .orElseThrow(EntityNotFoundException::new);
 
-        // Transform request to Trade
         Trade tradeToProcess = createPairTradeRequest.toTrade();
 
         // Set the user. We assume the authenticated user is user 1.
@@ -73,13 +72,10 @@ public class PairTradeController {
                 .orElseThrow(() -> new UserNotFoundException(1L));
         tradeToProcess.setUser(user);
 
-        // Set the pair
         tradeToProcess.setPair(pair);
 
-        // Process the trade, get the saved Trade in return
         Trade savedTrade = tradeService.create(tradeToProcess);
 
-        // Return with the saved trade
         EntityModel<Trade> entityModel = tradeModelAssembler.toModel(savedTrade);
 
         return ResponseEntity
