@@ -2,6 +2,7 @@ package com.williamblondel.infinitrade.service;
 
 import com.williamblondel.infinitrade.enumeration.TradeTypeEnum;
 import com.williamblondel.infinitrade.exception.InsufficientBalanceException;
+import com.williamblondel.infinitrade.exception.PairNonTradableException;
 import com.williamblondel.infinitrade.model.Pair;
 import com.williamblondel.infinitrade.model.Trade;
 import com.williamblondel.infinitrade.model.User;
@@ -32,6 +33,9 @@ public class TradeService {
     public Trade create(Trade trade) {
         TradeTypeEnum tradeType = trade.getTradeType();
         Pair tradePair = trade.getPair();
+
+        checkPairTradable(tradePair);
+
         User tradeUser = trade.getUser();
 
         Wallet walletQuoteCurrency = walletService.findFirstUserWalletForCurrencyOrFail(tradeUser, tradePair.getQuoteCurrency());
@@ -54,6 +58,12 @@ public class TradeService {
         trade.setCreatedAt(LocalDateTime.now());
 
         return tradeRepository.save(trade);
+    }
+
+    private void checkPairTradable(Pair tradePair) {
+        if (tradePair.getBidPrice().isNaN() || tradePair.getAskPrice().isNaN()) {
+            throw new PairNonTradableException(tradePair);
+        }
     }
 
     private void checkSufficientBalance(Wallet wallet, Double amount) {

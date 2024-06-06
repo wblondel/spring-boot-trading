@@ -42,11 +42,11 @@ public class Pair {
     private String pairCode;
 
     @NonNull
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double bidPrice;
 
     @NonNull
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double askPrice;
 
     @OneToMany(mappedBy = "pair")
